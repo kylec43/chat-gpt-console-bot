@@ -1,18 +1,18 @@
 ﻿using System.Net.Http.Headers;
-using ChatGptConsoleBot.Dto.OpenAi;
+using ChatGptConsoleBot.Dto;
 
-namespace ChatGptConsoleBot.Api.OpenAi;
+namespace ChatGptConsoleBot.Api;
 
-internal class Client : IHttpClient
+internal class OpenAiClient : IHttpClient
 {
     private readonly HttpClient client;
 
-    public Client(Config config, string? relativeUri = null)
+    public OpenAiClient(OpenAiConfig config, string? relativeUri = null)
     {
         client = CreateClient(config, relativeUri);
     }
 
-    private HttpClient CreateClient(Config config, string? relativeUri)
+    private HttpClient CreateClient(OpenAiConfig config, string? relativeUri)
     {
         var client = new HttpClient();
         var auth = new AuthenticationHeaderValue("Bearer", config.ApiKey);
@@ -24,11 +24,11 @@ internal class Client : IHttpClient
 
     public Task<HttpResponseMessage> Get(string? uri = null)
     {
-        return this.client.GetAsync(uri);
+        return client.GetAsync(uri);
     }
 
     public Task<HttpResponseMessage> Post(string? uri = null, HttpContent? httpContent = null)
     {
-        return this.client.PostAsync(uri, httpContent);
+        return client.PostAsync(uri, httpContent);
     }
 }

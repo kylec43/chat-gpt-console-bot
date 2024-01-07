@@ -1,6 +1,6 @@
-﻿using ChatGptConsoleBot.Collections.OpenAi;
+﻿using ChatGptConsoleBot.Collections.CompletionApi;
 
-namespace ChatGptConsoleBot.Dto.OpenAi;
+namespace ChatGptConsoleBot.Dto.CompletionApi;
 
 internal record struct CompletionPostBody
 {
@@ -10,6 +10,6 @@ internal record struct CompletionPostBody
     public CompletionPostBody(Messages messages, string model)
     {
         Messages = messages;
-        this.Model = model;
+        Model = model;
     }
 }

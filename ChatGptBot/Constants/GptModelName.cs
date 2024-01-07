@@ -1,4 +1,4 @@
-﻿namespace ChatGptConsoleBot.Constants.OpenAi;
+﻿namespace ChatGptConsoleBot.Constants;
 
 internal static class GptModelName
 {

@@ -1,10 +1,11 @@
 ﻿using System.Text;
 using ChatGptConsoleBot.Bots.ResponseStrategies;
-using ChatGptConsoleBot.Collections.OpenAi;
-using ChatGptConsoleBot.Constants.OpenAi;
+using ChatGptConsoleBot.Collections.CompletionApi;
+using ChatGptConsoleBot.Constants;
 using ChatGptConsoleBot.Dto;
+using ChatGptConsoleBot.Dto.CompletionApi;
 using ChatGptConsoleBot.Dto.OpenAi;
-using ChatGptConsoleBot.Services.OpenAi;
+using ChatGptConsoleBot.Services;
 
 namespace ChatGptConsoleBot.Bots;
 

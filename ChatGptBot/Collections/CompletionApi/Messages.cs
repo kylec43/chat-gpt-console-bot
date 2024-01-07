@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using ChatGptConsoleBot.Dto.OpenAi;
+using ChatGptConsoleBot.Dto.CompletionApi;
 
-namespace ChatGptConsoleBot.Collections.OpenAi;
+namespace ChatGptConsoleBot.Collections.CompletionApi;
 
 internal class Messages : IEnumerable<Message>
 {

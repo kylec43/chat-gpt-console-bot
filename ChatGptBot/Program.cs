@@ -14,7 +14,7 @@ class Program
             throw new Exception("Unable to get your question!");
         }
 
-        var clientFactory = new ClientFactory();
+        var clientFactory = new OpenAiClientFactory();
         var completionService = new CompletionService(clientFactory);
         var respondStrategy = new ConsoleRespondStrategy();
         var bot = new ChatGptBot(completionService, respondStrategy);

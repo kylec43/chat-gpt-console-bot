@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ChatGptConsoleBot.Dto.OpenAi;
+namespace ChatGptConsoleBot.Dto.CompletionApi;
 
 internal record struct Message
 {
