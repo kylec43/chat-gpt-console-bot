@@ -20,14 +20,14 @@ internal class OpenAiClientFactory : IOpenAiClientFactory
 
     public IHttpClient CreateOpenAiClient()
     {
-        var config = CreateConfig();
-        return CreateClient(config);
+        var config = this.CreateConfig();
+        return this.CreateClient(config);
     }
 
     public IHttpClient CreateCompletionClient()
     {
-        var config = CreateConfig();
+        var config = this.CreateConfig();
         var relativeUri = "/v1/chat/completions";
-        return CreateClient(config, relativeUri);
+        return this.CreateClient(config, relativeUri);
     }
 }
