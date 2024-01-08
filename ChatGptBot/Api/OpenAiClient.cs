@@ -1,5 +1,5 @@
 ﻿using System.Net.Http.Headers;
-using ChatGptConsoleBot.Dto;
+using ChatGptConsoleBot.Dto.Config;
 
 namespace ChatGptConsoleBot.Api;
 

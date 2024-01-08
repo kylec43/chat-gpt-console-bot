@@ -1,33 +1,28 @@
 ﻿using ChatGptConsoleBot.Api;
-using ChatGptConsoleBot.Api.OpenAi;
-using ChatGptConsoleBot.Dto;
+using ChatGptConsoleBot.Dto.Config;
 
 namespace ChatGptConsoleBot.Factories;
 
-internal class OpenAiClientFactory : IOpenAiClientFactory
+internal class OpenAiClientFactory : IOpenAiClientFactory, IOpenAiCompletionClientFactory
 {
-    private OpenAiConfig CreateConfig()
+    private OpenAiConfig config;
+    public OpenAiClientFactory(OpenAiConfig config)
     {
-        var baseUrl = "https://api.openai.com";
-        var apiKey = "";
-        return new OpenAiConfig(baseUrl, apiKey);
+        this.config = config;
     }
 
-    private IHttpClient CreateClient(OpenAiConfig config, string? relativeUri = null)
+    private IHttpClient CreateOpenAiClientWithRelativeUri(string? relativeUri)
     {
-        return new OpenAiClient(config, relativeUri);
+        return new OpenAiClient(this.config, relativeUri);
     }
 
     public IHttpClient CreateOpenAiClient()
     {
-        var config = this.CreateConfig();
-        return this.CreateClient(config);
+        return this.CreateOpenAiClientWithRelativeUri(null);
     }
 
     public IHttpClient CreateCompletionClient()
     {
-        var config = this.CreateConfig();
-        var relativeUri = "/v1/chat/completions";
-        return this.CreateClient(config, relativeUri);
+        return this.CreateOpenAiClientWithRelativeUri("/v1/chat/completions");
     }
 }
