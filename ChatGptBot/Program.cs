@@ -2,29 +2,26 @@
 using ChatGptConsoleBot.Bots.RespondStrategies;
 using ChatGptConsoleBot.Factories;
 using ChatGptConsoleBot.Services;
+using ChatGptConsoleBot.Util.ConsoleWriter;
 
 class Program
 {
     static async Task Main(string[] args)
     {
-        Console.WriteLine("Ask chat gpt something");
-        var message = Console.ReadLine();
-        if (message == null)
-        {
-            throw new Exception("Unable to get your question!");
-        }
-
+        var writer = new ChatWriter("User");
         var bot = CreateBot();
-        await bot.Chat(message);
 
-        Console.WriteLine("Ask chat gpt something else?");
-        message = Console.ReadLine();
-        if (message == null)
+        while (true)
         {
-            throw new Exception("Unable to get your question!");
-        }
+            writer.Write("");
+            var message = Console.ReadLine();
+            if (message == "exit")
+            {
+                return;
+            }
 
-        await bot.Chat(message);
+            await bot.Chat(message!);
+        }
     }
 
     static ChatGptBot CreateBot()
@@ -33,7 +30,8 @@ class Program
         var config = configFactory.Create();
         var clientFactory = new OpenAiClientFactory(config.OpenAi);
         var completionService = new CompletionService(clientFactory);
-        var respondStrategy = new ConsoleRespondStrategy();
+        var writer = new ChatWriter("Chat Gpt");
+        var respondStrategy = new ConsoleRespondStrategy(writer);
         return new ChatGptBot(completionService, respondStrategy, config.OpenAi);
     }
 }
