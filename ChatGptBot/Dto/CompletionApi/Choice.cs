@@ -2,7 +2,7 @@
 
 namespace ChatGptConsoleBot.Dto.CompletionApi;
 
-internal record struct Choice
+public record struct Choice
 {
     [JsonPropertyName("index")]
     public int Index { get; set; }

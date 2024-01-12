@@ -2,7 +2,7 @@
 
 namespace ChatGptConsoleBot.Dto.CompletionApi;
 
-internal class LogProbs
+public record struct LogProbs
 {
     [JsonPropertyName("content")]
     public List<Token>? Tokens { get; set; }

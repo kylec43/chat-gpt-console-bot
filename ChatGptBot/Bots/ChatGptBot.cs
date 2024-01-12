@@ -4,64 +4,60 @@ using ChatGptConsoleBot.Constants;
 using ChatGptConsoleBot.Dto;
 using ChatGptConsoleBot.Dto.CompletionApi;
 using ChatGptConsoleBot.Dto.Config;
+using ChatGptConsoleBot.Exceptions;
 using ChatGptConsoleBot.Services;
 
 namespace ChatGptConsoleBot.Bots;
 
-internal class ChatGptBot
+public class ChatGptBot
 {
     private ICompletionService completionService;
     private IRespondStrategy respondStrategy;
-    private Messages messageHistory;
+    private CompletionPostBody postBody;
+    private OpenAiConfig config;
 
     public ChatGptBot(ICompletionService completionService, IRespondStrategy respondStrategy, OpenAiConfig config)
     {
         this.completionService = completionService;
         this.respondStrategy = respondStrategy;
-        this.messageHistory = new Messages();
-        this.AddSystemContextToHistory(config, this.messageHistory);
+        this.postBody = new CompletionPostBody
+        {
+            Model = config.GptModel,
+            Messages = new Messages()
+        };
+
+        this.config = config;
+        this.AddSystemContextToPostBody(this.config, this.postBody);
     }
 
-    private void AddSystemContextToHistory(OpenAiConfig config, Messages messageHistory)
+    private void AddSystemContextToPostBody(OpenAiConfig config, CompletionPostBody postBody)
     {
         foreach (var content in config.SystemContext)
         {
-            messageHistory.Add(new Message(ChatRole.SYSTEM, content));
+            postBody.AddMessage(new Message { Role = ChatRole.SYSTEM, Content = content });
         }
     }
 
     public async Task Chat(string message)
     {
-        var postBody = this.BuildPostBody(message);
-        var completionResponse = await completionService.Chat(postBody);
-        var messages = this.GetMessagesFromResponse(completionResponse);
-        this.messageHistory.AddMessages(messages);
-        this.RespondWithMessages(messages);
-    }
-
-    private CompletionPostBody BuildPostBody(string message)
-    {
-        this.messageHistory.Add(new Message(ChatRole.USER, message));
-        var model = GptModelName.GPT_3_TURBO;
-        return new CompletionPostBody(this.messageHistory, model);
-    }
-
-    private Messages GetMessagesFromResponse(CompletionResponse completionResponse)
-    {
-        var messages = new Messages();
-        foreach (var choice in completionResponse.Choices)
+        var newMessage = new Message
         {
-            messages.Add(choice.Message);
+            Role = ChatRole.USER,
+            Content = message
+        };
+
+        this.postBody.AddMessage(newMessage);
+        var completionResponse = await completionService.Chat(postBody);
+        var choiceMessages = completionResponse.ChoiceMessages;
+        
+        var isMissingChoiceMessages = choiceMessages is not Messages || choiceMessages.Count == 0;
+        if (isMissingChoiceMessages)
+        {
+            throw new MissingChoicesException("Completion Service Response does not contain any choices");
         }
 
-        return messages;
-    }
-
-    private void RespondWithMessages(Messages messages)
-    {
-        var messageContents = messages.Select(message => message.Content);
-        var message = String.Join("\n", messageContents);
-        var chatResponse = new ChatResponse { Message = message };
-        this.respondStrategy.Respond(chatResponse);
+        var firstChoiceMessage = completionResponse.ChoiceMessages.First();
+        this.postBody.AddMessage(firstChoiceMessage);
+        this.respondStrategy.Respond(firstChoiceMessage.Content);
     }
 }

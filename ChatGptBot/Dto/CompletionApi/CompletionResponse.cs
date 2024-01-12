@@ -1,8 +1,9 @@
 ﻿using System.Text.Json.Serialization;
+using ChatGptConsoleBot.Collections.CompletionApi;
 
 namespace ChatGptConsoleBot.Dto.CompletionApi;
 
-internal record struct CompletionResponse
+public record struct CompletionResponse
 {
     [JsonPropertyName("id")]
     public string Id { get; set; }
@@ -24,4 +25,18 @@ internal record struct CompletionResponse
 
     [JsonPropertyName("usage")]
     public Usage Usage { get; set; }
+
+    public Messages ChoiceMessages
+    {
+        get
+        {
+            var messages = new Messages();
+            foreach (var choice in this.Choices)
+            {
+                messages.Add(choice.Message);
+            }
+
+            return messages;
+        }
+    }
 }

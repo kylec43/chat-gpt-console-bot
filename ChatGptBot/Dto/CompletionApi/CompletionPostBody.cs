@@ -2,14 +2,14 @@
 
 namespace ChatGptConsoleBot.Dto.CompletionApi;
 
-internal record struct CompletionPostBody
+public record struct CompletionPostBody
 {
     public Messages Messages { get; set; }
     public string Model { get; set; }
 
-    public CompletionPostBody(Messages messages, string model)
+    public CompletionPostBody AddMessage(Message message)
     {
-        Messages = messages;
-        Model = model;
+        Messages.Add(message);
+        return this;
     }
 }

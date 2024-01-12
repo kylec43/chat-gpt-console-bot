@@ -3,7 +3,7 @@ using ChatGptConsoleBot.Dto.CompletionApi;
 
 namespace ChatGptConsoleBot.Collections.CompletionApi;
 
-internal class Messages : IEnumerable<Message>
+public class Messages : IEnumerable<Message>
 {
     private List<Message> messages;
 
