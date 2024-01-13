@@ -1,7 +1,6 @@
 ﻿using ChatGptBotProject.Bots.ResponseStrategies;
 using ChatGptBotProject.Collections.CompletionApi;
 using ChatGptBotProject.Constants;
-using ChatGptBotProject.Dto;
 using ChatGptBotProject.Dto.CompletionApi;
 using ChatGptBotProject.Dto.Config;
 using ChatGptBotProject.Exceptions;

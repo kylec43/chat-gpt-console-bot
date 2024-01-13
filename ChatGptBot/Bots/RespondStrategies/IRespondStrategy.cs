@@ -1,6 +1,4 @@
-﻿using ChatGptBotProject.Dto;
-
-namespace ChatGptBotProject.Bots.ResponseStrategies;
+﻿namespace ChatGptBotProject.Bots.ResponseStrategies;
 
 public interface IRespondStrategy
 {
