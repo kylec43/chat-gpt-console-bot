@@ -1,9 +1,9 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using ChatGptConsoleBot.Collections.CompletionApi;
-using ChatGptConsoleBot.Dto.CompletionApi;
+using ChatGptBotProject.Collections.CompletionApi;
+using ChatGptBotProject.Dto.CompletionApi;
 
-namespace ChatGptConsoleBot.JsonConverters;
+namespace ChatGptBotProject.JsonConverters;
 
 internal class CompletionPostBodyConverter : JsonConverter<CompletionPostBody>
 {

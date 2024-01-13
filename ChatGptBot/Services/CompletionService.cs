@@ -1,11 +1,11 @@
 ﻿using System.Text;
 using System.Text.Json;
-using ChatGptConsoleBot.Api;
-using ChatGptConsoleBot.Dto.CompletionApi;
-using ChatGptConsoleBot.Factories;
-using ChatGptConsoleBot.JsonConverters;
+using ChatGptBotProject.Api;
+using ChatGptBotProject.Dto.CompletionApi;
+using ChatGptBotProject.Factories;
+using ChatGptBotProject.JsonConverters;
 
-namespace ChatGptConsoleBot.Services;
+namespace ChatGptBotProject.Services;
 
 internal class CompletionService : ICompletionService
 {

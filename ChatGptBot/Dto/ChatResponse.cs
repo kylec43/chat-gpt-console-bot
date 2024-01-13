@@ -1,4 +1,4 @@
-﻿namespace ChatGptConsoleBot.Dto;
+﻿namespace ChatGptBotProject.Dto;
 
 public record struct ChatResponse
 {

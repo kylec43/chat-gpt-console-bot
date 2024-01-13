@@ -1,6 +1,6 @@
-﻿using ChatGptConsoleBot.Dto.Config;
+﻿using ChatGptBotProject.Dto.Config;
 
-namespace ChatGptConsoleBot.Factories;
+namespace ChatGptBotProject.Factories;
 
 internal interface IConfigFactory
 {

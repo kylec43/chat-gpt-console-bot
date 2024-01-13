@@ -1,4 +1,4 @@
-﻿namespace ChatGptConsoleBot.Util.ConsoleWriter;
+﻿namespace ChatGptBotProject.Util.ConsoleWriter;
 
 public interface IConsoleWriter
 {

@@ -1,8 +1,8 @@
-﻿using ChatGptConsoleBot.Bots;
-using ChatGptConsoleBot.Bots.RespondStrategies;
-using ChatGptConsoleBot.Factories;
-using ChatGptConsoleBot.Services;
-using ChatGptConsoleBot.Util.ConsoleWriter;
+﻿using ChatGptBotProject.Bots;
+using ChatGptBotProject.Bots.RespondStrategies;
+using ChatGptBotProject.Factories;
+using ChatGptBotProject.Services;
+using ChatGptBotProject.Util.ConsoleWriter;
 
 class Program
 {

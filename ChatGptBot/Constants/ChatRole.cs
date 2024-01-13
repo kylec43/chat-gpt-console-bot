@@ -1,4 +1,4 @@
-﻿namespace ChatGptConsoleBot.Constants;
+﻿namespace ChatGptBotProject.Constants;
 
 public static class ChatRole
 {

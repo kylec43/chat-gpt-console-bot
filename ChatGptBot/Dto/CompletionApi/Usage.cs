@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ChatGptConsoleBot.Dto.CompletionApi;
+namespace ChatGptBotProject.Dto.CompletionApi;
 
 public record struct Usage
 {

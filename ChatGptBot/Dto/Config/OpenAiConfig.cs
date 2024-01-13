@@ -1,4 +1,4 @@
-﻿namespace ChatGptConsoleBot.Dto.Config;
+﻿namespace ChatGptBotProject.Dto.Config;
 
 public record struct OpenAiConfig
 {

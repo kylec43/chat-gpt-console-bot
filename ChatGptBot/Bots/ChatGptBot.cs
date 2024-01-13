@@ -1,13 +1,13 @@
-﻿using ChatGptConsoleBot.Bots.ResponseStrategies;
-using ChatGptConsoleBot.Collections.CompletionApi;
-using ChatGptConsoleBot.Constants;
-using ChatGptConsoleBot.Dto;
-using ChatGptConsoleBot.Dto.CompletionApi;
-using ChatGptConsoleBot.Dto.Config;
-using ChatGptConsoleBot.Exceptions;
-using ChatGptConsoleBot.Services;
+﻿using ChatGptBotProject.Bots.ResponseStrategies;
+using ChatGptBotProject.Collections.CompletionApi;
+using ChatGptBotProject.Constants;
+using ChatGptBotProject.Dto;
+using ChatGptBotProject.Dto.CompletionApi;
+using ChatGptBotProject.Dto.Config;
+using ChatGptBotProject.Exceptions;
+using ChatGptBotProject.Services;
 
-namespace ChatGptConsoleBot.Bots;
+namespace ChatGptBotProject.Bots;
 
 public class ChatGptBot
 {

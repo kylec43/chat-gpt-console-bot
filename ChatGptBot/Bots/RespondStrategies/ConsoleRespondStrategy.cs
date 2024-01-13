@@ -1,8 +1,8 @@
-﻿using ChatGptConsoleBot.Bots.ResponseStrategies;
-using ChatGptConsoleBot.Dto;
-using ChatGptConsoleBot.Util.ConsoleWriter;
+﻿using ChatGptBotProject.Bots.ResponseStrategies;
+using ChatGptBotProject.Dto;
+using ChatGptBotProject.Util.ConsoleWriter;
 
-namespace ChatGptConsoleBot.Bots.RespondStrategies;
+namespace ChatGptBotProject.Bots.RespondStrategies;
 
 public class ConsoleRespondStrategy : IRespondStrategy
 {

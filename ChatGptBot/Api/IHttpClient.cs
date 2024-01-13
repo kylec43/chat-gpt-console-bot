@@ -1,4 +1,4 @@
-﻿namespace ChatGptConsoleBot.Api;
+﻿namespace ChatGptBotProject.Api;
 
 internal interface IHttpClient
 {

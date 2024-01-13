@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using ChatGptConsoleBot.Dto.CompletionApi;
+using ChatGptBotProject.Dto.CompletionApi;
 
-namespace ChatGptConsoleBot.Collections.CompletionApi;
+namespace ChatGptBotProject.Collections.CompletionApi;
 
 public class Messages : IEnumerable<Message>
 {

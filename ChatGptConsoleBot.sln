@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatGptConsoleBot", "ChatGptBot\ChatGptConsoleBot.csproj", "{0CE60600-3329-400A-8044-7A0D6B4761CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatGptBotProject", "ChatGptBot\ChatGptBotProject.csproj", "{0CE60600-3329-400A-8044-7A0D6B4761CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatGptConsoleBot.Tests", "ChatBotUnitTests\ChatGptConsoleBot.Tests.csproj", "{6C39E4F3-637D-41CB-B2DD-A161CB5EB5DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatGptBotProject.Tests", "ChatBotUnitTests\ChatGptBotProject.Tests.csproj", "{6C39E4F3-637D-41CB-B2DD-A161CB5EB5DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

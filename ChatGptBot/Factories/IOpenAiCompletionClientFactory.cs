@@ -1,6 +1,6 @@
-﻿using ChatGptConsoleBot.Api;
+﻿using ChatGptBotProject.Api;
 
-namespace ChatGptConsoleBot.Factories;
+namespace ChatGptBotProject.Factories;
 
 internal interface IOpenAiCompletionClientFactory
 {

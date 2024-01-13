@@ -1,6 +1,6 @@
-﻿using ChatGptConsoleBot.Dto.CompletionApi;
+﻿using ChatGptBotProject.Dto.CompletionApi;
 
-namespace ChatGptConsoleBot.Services;
+namespace ChatGptBotProject.Services;
 
 public interface ICompletionService
 {

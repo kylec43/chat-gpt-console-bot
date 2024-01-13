@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Headers;
-using ChatGptConsoleBot.Dto.Config;
+using ChatGptBotProject.Dto.Config;
 
-namespace ChatGptConsoleBot.Api;
+namespace ChatGptBotProject.Api;
 
 internal class OpenAiClient : IHttpClient
 {

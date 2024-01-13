@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
-using ChatGptConsoleBot.Collections.CompletionApi;
+using ChatGptBotProject.Collections.CompletionApi;
 
-namespace ChatGptConsoleBot.Dto.CompletionApi;
+namespace ChatGptBotProject.Dto.CompletionApi;
 
 public record struct CompletionResponse
 {

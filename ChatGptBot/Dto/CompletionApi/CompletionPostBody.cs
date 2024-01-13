@@ -1,6 +1,6 @@
-﻿using ChatGptConsoleBot.Collections.CompletionApi;
+﻿using ChatGptBotProject.Collections.CompletionApi;
 
-namespace ChatGptConsoleBot.Dto.CompletionApi;
+namespace ChatGptBotProject.Dto.CompletionApi;
 
 public record struct CompletionPostBody
 {

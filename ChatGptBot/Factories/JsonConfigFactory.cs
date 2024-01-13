@@ -1,7 +1,7 @@
-﻿using ChatGptConsoleBot.Dto.Config;
+﻿using ChatGptBotProject.Dto.Config;
 using Microsoft.Extensions.Configuration;
 
-namespace ChatGptConsoleBot.Factories;
+namespace ChatGptBotProject.Factories;
 
 internal class JsonConfigFactory : IConfigFactory
 {

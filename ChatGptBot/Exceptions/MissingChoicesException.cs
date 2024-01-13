@@ -1,4 +1,4 @@
-﻿namespace ChatGptConsoleBot.Exceptions;
+﻿namespace ChatGptBotProject.Exceptions;
 
 public class MissingChoicesException : Exception
 {

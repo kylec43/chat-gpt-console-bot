@@ -1,5 +1,5 @@
-﻿using ChatGptConsoleBot.Bots.RespondStrategies;
-using ChatGptConsoleBot.Util.ConsoleWriter;
+﻿using ChatGptBotProject.Bots.RespondStrategies;
+using ChatGptBotProject.Util.ConsoleWriter;
 using Moq;
 
 namespace ChatBotUnitTests.Bots.RespondStrategies;

@@ -1,7 +1,7 @@
-﻿using ChatGptConsoleBot.Api;
-using ChatGptConsoleBot.Dto.Config;
+﻿using ChatGptBotProject.Api;
+using ChatGptBotProject.Dto.Config;
 
-namespace ChatGptConsoleBot.Factories;
+namespace ChatGptBotProject.Factories;
 
 internal class OpenAiClientFactory : IOpenAiClientFactory, IOpenAiCompletionClientFactory
 {
