@@ -28,11 +28,12 @@ public class ChatGptBotTest
         this.config.GptModel = GptModelName.GPT_3_TURBO;
         this.config.SystemContext = new List<string> { "Random Context" };
         this.chatBot = new ChatGptBot(this.completionServiceMock.Object, this.respondStrategyMock.Object, config);
-        
+
     }
 
     [Test]
-    public async Task Chat_CanPassCorrectPostBodyToCompletionService()
+    public async Task Chat_CanPassCorrectPostBodyToCompletionService_WhenChatting(
+        [Values(1, 2, 3)] int chatCount)
     {
         // Arrange
         var messageToSend = "Test Message";
@@ -45,16 +46,21 @@ public class ChatGptBotTest
             .Returns(Task.FromResult(completionResponse));
 
         // Act
-        await this.chatBot.Chat(messageToSend);
+        for (int i = 0; i < chatCount; i++)
+        {
+            await this.chatBot.Chat(messageToSend);
+        }
 
         // Assert
-        var expectedPostBody = this.BuildExpectedPostBody(messageToSend);
-        Expression<Func<CompletionPostBody, bool>> isExpectedPostBody 
-            = (postBody) => this.IsPostBodyExpectedPostBody(postBody, expectedPostBody);
+        var expectedPostBody = this.CreateExpectedPostBody(messageToSend, responseMessage, chatCount);
 
-        this.completionServiceMock
-            .Verify(c => c.Chat(It.Is(isExpectedPostBody)), Times.Once());
+        Expression<Func<CompletionPostBody, bool>> isExpectedPostBody;
+        isExpectedPostBody = (postBody) => this.IsPostBodyExpectedPostBody(postBody, expectedPostBody);
 
+        this.completionServiceMock.Verify(
+            c => c.Chat(It.Is(isExpectedPostBody)), 
+            Times.Exactly(chatCount)
+        );
     }
 
     [Test]
@@ -95,63 +101,61 @@ public class ChatGptBotTest
         Assert.ThrowsAsync<MissingChoicesException>(async () => await this.chatBot.Chat(messageToSend));
     }
 
-    private CompletionResponse CreateFakeResponse(string responseMessage, int choiceCount)
+    private CompletionPostBody CreateExpectedPostBody(string messageToSend, string responseMessage, int chatCount)
+    {
+        var messages = new Messages();
+        var systemContextMessages = this.GetSystemContextMessages();
+        messages.AddMessages(systemContextMessages);
+
+        for (int i = 0; i < chatCount; i++)
+        {
+            var userMessage = new Message { Role = ChatRole.USER, Content = messageToSend };
+            var assistantMessage = new Message { Role = ChatRole.ASSISTANT, Content = responseMessage };
+            messages.Add(userMessage);
+            messages.Add(assistantMessage);
+        }
+
+        return new CompletionPostBody { Model = this.config.GptModel, Messages = messages };
+    }
+
+    private Messages GetSystemContextMessages()
+    {
+        var messages = new Messages();
+        foreach (var content in this.config.SystemContext)
+        {
+            var systemMessage = new Message { Role = ChatRole.SYSTEM, Content = content };
+            messages.Add(systemMessage);
+        }
+
+        return messages;
+    }
+
+    private CompletionResponse CreateFakeResponse(string responseMessage, int choiceCount = 1)
     {
         var choices = new List<Choice>();
         for (int i = 0; i < choiceCount; i++)
         {
-            var choice = new Choice
-            {
-                Message = new Message
-                {
-                    Content = responseMessage
-                }
-            };
-
+            var assistantMessage = new Message { Role = ChatRole.ASSISTANT, Content = responseMessage };
+            var choice = new Choice { Message = assistantMessage };
             choices.Add(choice);
         }
 
-        return new CompletionResponse
-        {
-            Choices = choices
-        };
-    }
-
-    private CompletionPostBody BuildExpectedPostBody(string messageToSend)
-    {
-        var messages = new Messages();
-        var systemContext = this.config.SystemContext;
-        foreach (var content in systemContext)
-        {
-            var systemMessage = new Message
-            {
-                Role = ChatRole.SYSTEM,
-                Content = content
-            };
-
-            messages.Add(systemMessage);
-        }
-
-        var userMessage = new Message
-        {
-            Role = ChatRole.USER,
-            Content = messageToSend
-        };
-        messages.Add(userMessage);
-
-        return new CompletionPostBody
-        {
-            Messages = messages,
-            Model = this.config.GptModel
-        };
+        return new CompletionResponse { Choices = choices };
     }
 
     private bool IsPostBodyExpectedPostBody(CompletionPostBody postBody, CompletionPostBody expectedPostBody)
     {
         var expectedMessages = expectedPostBody.Messages;
         var messages = postBody.Messages;
+        
+        // Verify Message Count
+        if (messages.Count != expectedMessages.Count)
+        {
+            return false;
+        }
 
-        for (int i = 0; i < expectedMessages.Count; i++)
+        // Verify Message Content
+        for (int i = 0; i < messages.Count; i++)
         {
             if (messages[i] != expectedMessages[i])
             {
@@ -159,6 +163,7 @@ public class ChatGptBotTest
             }
         }
 
+        // Verify Model
         return postBody.Model == expectedPostBody.Model;
     }
 }
