@@ -1,4 +1,4 @@
-﻿using ChatGptBotProject.Api;
+﻿using ChatGptBotProject.Clients;
 
 namespace ChatGptBotProject.Factories;
 

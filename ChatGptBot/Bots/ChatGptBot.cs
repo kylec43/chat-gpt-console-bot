@@ -39,13 +39,9 @@ public class ChatGptBot
 
     public async Task Chat(string message)
     {
-        var newMessage = new Message
-        {
-            Role = ChatRole.USER,
-            Content = message
-        };
-
+        var newMessage = new Message { Role = ChatRole.USER, Content = message };
         this.postBody.AddMessage(newMessage);
+
         var completionResponse = await completionService.Chat(postBody);
         var choiceMessages = completionResponse.ChoiceMessages;
         

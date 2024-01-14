@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using ChatGptBotProject.Dto.Config;
 
-namespace ChatGptBotProject.Api;
+namespace ChatGptBotProject.Clients;
 
 internal class OpenAiClient : IHttpClient
 {
@@ -9,7 +9,7 @@ internal class OpenAiClient : IHttpClient
 
     public OpenAiClient(OpenAiConfig config, string? relativeUri = null)
     {
-        client = CreateClient(config, relativeUri);
+        this.client = CreateClient(config, relativeUri);
     }
 
     private HttpClient CreateClient(OpenAiConfig config, string? relativeUri)

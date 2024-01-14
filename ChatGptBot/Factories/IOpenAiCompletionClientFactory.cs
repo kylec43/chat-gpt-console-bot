@@ -1,8 +1,8 @@
-﻿using ChatGptBotProject.Api;
+﻿using ChatGptBotProject.Clients;
 
 namespace ChatGptBotProject.Factories;
 
-internal interface IOpenAiCompletionClientFactory
+public interface IOpenAiCompletionClientFactory
 {
     IHttpClient CreateCompletionClient();
 }

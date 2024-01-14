@@ -1,13 +1,13 @@
 ﻿using System.Text;
 using System.Text.Json;
-using ChatGptBotProject.Api;
+using ChatGptBotProject.Clients;
 using ChatGptBotProject.Dto.CompletionApi;
 using ChatGptBotProject.Factories;
 using ChatGptBotProject.JsonConverters;
 
 namespace ChatGptBotProject.Services;
 
-internal class CompletionService : ICompletionService
+public class CompletionService : ICompletionService
 {
     private IHttpClient completionClient;
 
