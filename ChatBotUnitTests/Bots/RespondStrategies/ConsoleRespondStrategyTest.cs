@@ -4,7 +4,7 @@ using Moq;
 
 namespace ChatBotUnitTests.Bots.RespondStrategies;
 
-public class ConsoleRespondStrategyTest
+internal class ConsoleRespondStrategyTest
 {
     [Test]
     public void Respond_CanWriteToConsole_WhenGivenMessage()

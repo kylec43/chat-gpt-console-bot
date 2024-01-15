@@ -8,7 +8,7 @@ using Moq;
 
 namespace ChatGptBotProject.Tests.Services;
 
-public class CompletionServiceTest
+internal class CompletionServiceTest
 {
     private Mock<IHttpClient> client;
     private CompletionService completionService;

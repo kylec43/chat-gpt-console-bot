@@ -2,7 +2,7 @@
 
 namespace ChatGptBotProject.Dto.CompletionApi;
 
-public record struct Usage
+internal record struct Usage
 {
     [JsonPropertyName("prompt_tokens")]
     public int PromptTokens { get; set; }

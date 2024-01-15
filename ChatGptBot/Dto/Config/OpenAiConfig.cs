@@ -1,6 +1,6 @@
 ﻿namespace ChatGptBotProject.Dto.Config;
 
-public record struct OpenAiConfig
+internal record struct OpenAiConfig
 {
     public string BaseUrl { get; set; }
     public string ApiKey { get; set; }

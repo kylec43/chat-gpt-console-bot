@@ -3,7 +3,7 @@ using ChatGptBotProject.Collections.CompletionApi;
 
 namespace ChatGptBotProject.Dto.CompletionApi;
 
-public record struct CompletionResponse
+internal record struct CompletionResponse
 {
     [JsonPropertyName("id")]
     public string Id { get; set; }

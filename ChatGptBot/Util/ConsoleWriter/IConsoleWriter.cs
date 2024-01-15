@@ -1,6 +1,6 @@
 ﻿namespace ChatGptBotProject.Util.ConsoleWriter;
 
-public interface IConsoleWriter
+internal interface IConsoleWriter
 {
     void Write(string message);
     void WriteLine(string message);

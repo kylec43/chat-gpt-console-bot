@@ -2,7 +2,7 @@
 
 namespace ChatGptBotProject.Dto.CompletionApi;
 
-public record struct Message
+internal record struct Message
 {
     [JsonPropertyName("role")]
     public string Role { get; set; }

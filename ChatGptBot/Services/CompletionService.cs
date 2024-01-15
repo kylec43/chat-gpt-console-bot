@@ -7,7 +7,7 @@ using ChatGptBotProject.JsonConverters;
 
 namespace ChatGptBotProject.Services;
 
-public class CompletionService : ICompletionService
+internal class CompletionService : ICompletionService
 {
     private IHttpClient completionClient;
 

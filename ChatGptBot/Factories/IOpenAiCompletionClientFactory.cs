@@ -2,7 +2,7 @@
 
 namespace ChatGptBotProject.Factories;
 
-public interface IOpenAiCompletionClientFactory
+internal interface IOpenAiCompletionClientFactory
 {
     IHttpClient CreateCompletionClient();
 }

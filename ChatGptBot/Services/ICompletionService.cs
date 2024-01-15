@@ -2,7 +2,7 @@
 
 namespace ChatGptBotProject.Services;
 
-public interface ICompletionService
+internal interface ICompletionService
 {
     Task<CompletionResponse> Chat(CompletionPostBody body);
 }

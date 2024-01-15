@@ -1,6 +1,6 @@
 ﻿namespace ChatGptBotProject.Exceptions;
 
-public class MissingChoicesException : Exception
+internal class MissingChoicesException : Exception
 {
     public MissingChoicesException(string? message): base(message) 
     { 

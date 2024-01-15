@@ -2,7 +2,7 @@
 
 namespace ChatGptBotProject.Dto.CompletionApi;
 
-public record struct CompletionPostBody
+internal record struct CompletionPostBody
 {
     public Messages Messages { get; set; }
     public string Model { get; set; }

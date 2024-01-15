@@ -1,6 +1,6 @@
 ﻿namespace ChatGptBotProject.Bots.ResponseStrategies;
 
-public interface IRespondStrategy
+internal interface IRespondStrategy
 {
     void Respond(string response);
 }

@@ -12,7 +12,7 @@ using Moq;
 
 namespace ChatBotUnitTests.Bots;
 
-public class ChatGptBotTest
+internal class ChatGptBotTest
 {
     private Mock<ICompletionService> completionServiceMock;
     private Mock<IRespondStrategy> respondStrategyMock;

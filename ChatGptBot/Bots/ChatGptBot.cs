@@ -8,7 +8,7 @@ using ChatGptBotProject.Services;
 
 namespace ChatGptBotProject.Bots;
 
-public class ChatGptBot
+internal class ChatGptBot
 {
     private ICompletionService completionService;
     private IRespondStrategy respondStrategy;

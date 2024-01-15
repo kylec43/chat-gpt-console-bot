@@ -2,7 +2,7 @@
 
 namespace ChatGptBotProject.Dto.CompletionApi;
 
-public record struct Token
+internal record struct Token
 {
     [JsonPropertyName("token")]
     public string TokenValue { get; set; }

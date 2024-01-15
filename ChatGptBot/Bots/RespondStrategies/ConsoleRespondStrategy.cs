@@ -4,7 +4,7 @@ using ChatGptBotProject.Util.ConsoleWriter;
 
 namespace ChatGptBotProject.Bots.RespondStrategies;
 
-public class ConsoleRespondStrategy : IRespondStrategy
+internal class ConsoleRespondStrategy : IRespondStrategy
 {
     private IConsoleWriter writer;
 
