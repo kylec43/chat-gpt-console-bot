@@ -1,4 +1,7 @@
-﻿using System.Net;
+﻿using System.Dynamic;
+using System.Linq.Expressions;
+using System.Net;
+using System.Text.Json;
 using ChatGptBotProject.Clients;
 using ChatGptBotProject.Collections.CompletionApi;
 using ChatGptBotProject.Dto.CompletionApi;
@@ -42,6 +45,26 @@ internal class CompletionServiceTest
     }
 
     [Test]
+    public async Task Chat_CanPassExpectedJson_WhenCallingCompletionClient()
+    {
+        // Arrange
+        var httpResponse = this.CreateFakeHttpResponse(200);
+        var taskResponse = Task.FromResult(httpResponse);
+        this.client
+            .Setup(c => c.Post(null, It.IsAny<HttpContent>()))
+            .Returns(taskResponse);
+
+        var postBody = this.CreateFakeCompletionPostBody();
+
+        // Act
+        var result = await this.completionService.Chat(postBody);
+
+        // Assert
+        Expression<Func<HttpContent, bool>> isExpectedPostBody;
+        isExpectedPostBody = content => this.IsHttpContentExpectedPostBody(content, postBody); 
+        this.client.Verify(c => c.Post(It.IsAny<string>(), It.Is(isExpectedPostBody)));
+    }
+
     public async Task Chat_CanReturnCorrectCompletionResponse_WhenHttpResponseIsValid()
     {
         // Arrange
@@ -68,7 +91,6 @@ internal class CompletionServiceTest
             Assert.That(result.Usage, Is.EqualTo(expectedResult.Usage));
             Assert.That(result.SystemFingerprint, Is.EqualTo(expectedResult.SystemFingerprint));
         });
-
     }
 
     private CompletionResponse CreateExpectedCompletionResponse()
@@ -146,9 +168,41 @@ internal class CompletionServiceTest
     {
         return new CompletionPostBody
         {
-            Messages = new Messages(),
+            Messages = new Messages
+            {
+                new Message { Role = "role1", Content = "Test Content" },
+                new Message { Role = "role2", Content = "Test Content2" }
+            },
             Model = "Unknown"
         };
+    }
+
+    private bool IsHttpContentExpectedPostBody(HttpContent httpContent, CompletionPostBody expectedPostBody)
+    {
+        dynamic? obj = JsonSerializer.Deserialize<ExpandoObject>(httpContent.ReadAsStream());
+
+        // Verify messages are expected messages
+        var messages = JsonSerializer.Deserialize<List<dynamic>>(obj?.messages);
+        var expectedMessages = expectedPostBody.Messages;
+        for (int i = 0; i < messages.Count; i++)
+        {
+            dynamic? message = JsonSerializer.Deserialize<ExpandoObject>(messages[i]);
+            string role = JsonSerializer.Deserialize<string>(message?.role);
+            string content = JsonSerializer.Deserialize<string>(message?.content);
+            if (role != expectedMessages[i].Role)
+            {
+                return false;
+            }
+
+            if (content != expectedMessages[i].Content)
+            {
+                return false;
+            }
+        }
+
+        // Verify model is expected model
+        string model = JsonSerializer.Deserialize<string>(obj.model);
+        return model == expectedPostBody.Model;
     }
 
 }
