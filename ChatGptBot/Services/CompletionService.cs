@@ -8,7 +8,7 @@ namespace ChatGptBotProject.Services;
 
 internal class CompletionService : ICompletionService
 {
-    private IHttpClient completionClient;
+    private readonly IHttpClient completionClient;
 
     public CompletionService(IOpenAiCompletionClientFactory clientFactory)
     {

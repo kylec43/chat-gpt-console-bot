@@ -6,7 +6,7 @@ namespace ChatGptBotProject.Bots.RespondStrategies;
 
 internal class ConsoleRespondStrategy : IRespondStrategy
 {
-    private IConsoleWriter writer;
+    private readonly IConsoleWriter writer;
 
     public ConsoleRespondStrategy(IConsoleWriter writer)
     {

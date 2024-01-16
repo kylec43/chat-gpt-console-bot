@@ -5,7 +5,7 @@ namespace ChatGptBotProject.Factories;
 
 internal class OpenAiClientFactory : IOpenAiClientFactory, IOpenAiCompletionClientFactory
 {
-    private OpenAiConfig config;
+    private readonly OpenAiConfig config;
     public OpenAiClientFactory(OpenAiConfig config)
     {
         this.config = config;
