@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatGptBotProject", "ChatGp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatGptBotProject.UnitTests", "ChatBotUnitTests\ChatGptBotProject.UnitTests.csproj", "{6C39E4F3-637D-41CB-B2DD-A161CB5EB5DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatGptBotProject.IntegrationTests", "ChatBotProject.IntegrationTests\ChatGptBotProject.IntegrationTests.csproj", "{A27BF1CB-38BB-45A1-92C1-00C5AB10CCB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6C39E4F3-637D-41CB-B2DD-A161CB5EB5DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C39E4F3-637D-41CB-B2DD-A161CB5EB5DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C39E4F3-637D-41CB-B2DD-A161CB5EB5DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A27BF1CB-38BB-45A1-92C1-00C5AB10CCB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A27BF1CB-38BB-45A1-92C1-00C5AB10CCB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A27BF1CB-38BB-45A1-92C1-00C5AB10CCB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A27BF1CB-38BB-45A1-92C1-00C5AB10CCB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
