@@ -1,5 +1,4 @@
 ﻿using ChatGptBotProject.Bots.ResponseStrategies;
-using ChatGptBotProject.Dto;
 using ChatGptBotProject.Util.ConsoleWriter;
 
 namespace ChatGptBotProject.Bots.RespondStrategies;
