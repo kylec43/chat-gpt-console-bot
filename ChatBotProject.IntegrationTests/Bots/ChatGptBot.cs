@@ -11,7 +11,6 @@ namespace ChatBotUnitTests.Bots;
 internal class ChatGptBotTest
 {
     private Mock<IRespondStrategy> respondStrategyMock;
-    private OpenAiConfig config;
     private ChatGptBot chatBot;
 
     [SetUp]
