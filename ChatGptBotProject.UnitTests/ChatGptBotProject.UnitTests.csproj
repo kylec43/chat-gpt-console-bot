@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ChatGptBotProject\ChatGptBotProject.csproj" />
-    <ProjectReference Include="..\ChatGptBot\ChatGptBotProject.csproj" />
   </ItemGroup>
 
 </Project>
