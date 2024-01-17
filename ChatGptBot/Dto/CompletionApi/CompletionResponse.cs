@@ -15,7 +15,7 @@ internal record struct CompletionResponse
     public int Created { get; set; }
 
     [JsonPropertyName("system_fingerprint")]
-    public string SystemFingerprint { get; set; }
+    public string? SystemFingerprint { get; set; }
 
     [JsonPropertyName("model")]
     public string Model { get; set; }

@@ -3,28 +3,33 @@
 internal class ChatWriter : IConsoleWriter
 {
     private string nameOfChatter;
+    public string Identifier => this.GetIdentifier();
+    public int LineLength { get; }
 
-    public ChatWriter(string nameOfChatter)
+    public ChatWriter(string nameOfChatter, int lineLength = 60)
     {
         this.nameOfChatter = nameOfChatter;
+        this.LineLength = lineLength;
     }
 
     public void Write(string message)
     {
-        var identifier = this.GetIdentifier();
-        Console.Write($"{identifier}\n{message}");
+        Console.Write($"{this.Identifier}\n{message}");
     }
 
     public void WriteLine(string message)
     {
-        var identifier = this.GetIdentifier();
-        Console.WriteLine($"{identifier}\n{message}");
+        Console.WriteLine($"{this.Identifier}\n{message}");
     }
 
     private string GetIdentifier()
     {
-        const int LINE_LENGTH = 60;
-        var numberOfDashes =  LINE_LENGTH - this.nameOfChatter.Length;
+        var numberOfDashes =  this.LineLength - this.nameOfChatter.Length;
+        if (numberOfDashes <= 0) 
+        {
+            return this.nameOfChatter;
+        }
+
         var numberOfDashesInFront = (int)(numberOfDashes / 2);
         var dashesToAdd = numberOfDashes - (numberOfDashesInFront * 2);
         var numberOfDashesInBack = numberOfDashesInFront + dashesToAdd;
