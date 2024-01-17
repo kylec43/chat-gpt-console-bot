@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatGptBotProject", "ChatGptBotProject\ChatGptBotProject.csproj", "{0CE60600-3329-400A-8044-7A0D6B4761CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatGptBotProject", "ChatGptBot\ChatGptBotProject.csproj", "{0CE60600-3329-400A-8044-7A0D6B4761CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatGptBotProject.UnitTests", "ChatGptBotProject.UnitTests\ChatGptBotProject.UnitTests.csproj", "{6C39E4F3-637D-41CB-B2DD-A161CB5EB5DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatGptBotProject.UnitTests", "ChatBotUnitTests\ChatGptBotProject.UnitTests.csproj", "{6C39E4F3-637D-41CB-B2DD-A161CB5EB5DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatGptBotProject.IntegrationTests", "ChatBotProject.IntegrationTests\ChatGptBotProject.IntegrationTests.csproj", "{A27BF1CB-38BB-45A1-92C1-00C5AB10CCB6}"
 EndProject
