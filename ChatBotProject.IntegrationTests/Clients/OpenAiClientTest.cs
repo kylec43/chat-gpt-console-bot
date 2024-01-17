@@ -1,8 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json;
 using ChatGptBotProject.Clients;
-using ChatGptBotProject.Collections.CompletionApi;
-using ChatGptBotProject.Constants;
 using ChatGptBotProject.Dto.CompletionApi;
 using ChatGptBotProject.Dto.Config;
 using ChatGptBotProject.Factories;
@@ -29,15 +27,7 @@ internal class OpenAiClientTest
     public async Task Post_CanReturnValidResponse_WhenCallingCompletionApi()
     {
         // Arrange
-        var postBody = new CompletionPostBody
-        {
-            Messages = new Messages
-            {
-                new Message { Role = ChatRole.USER, Content = "How are you?" }
-            },
-            Model = this.openAiConfig.GptModel
-        };
-
+        var postBody = CompletionPostBodyFactory.CreateFake(this.openAiConfig.GptModel);
         var serializedBody = JsonSerializer.Serialize(postBody);
         var httpContent = new StringContent(serializedBody, Encoding.UTF8, "application/json");
 

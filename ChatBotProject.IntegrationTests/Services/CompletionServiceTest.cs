@@ -1,7 +1,4 @@
-﻿using ChatGptBotProject.Collections.CompletionApi;
-using ChatGptBotProject.Constants;
-using ChatGptBotProject.Dto.CompletionApi;
-using ChatGptBotProject.Dto.Config;
+﻿using ChatGptBotProject.Dto.Config;
 using ChatGptBotProject.Factories;
 using ChatGptBotProject.IntegrationTests.TestHelpers;
 using ChatGptBotProject.Services;
@@ -28,14 +25,7 @@ internal class CompletionServiceTest
     public async Task Chat_CanReturnCorrectCompletionResponse_WhenHttpResponseIsValid()
     {
         // Arrange
-        var postBody = new CompletionPostBody
-        {
-            Messages = new Messages
-            {
-                new Message { Role = ChatRole.USER, Content = "How are you?" }
-            },
-            Model = this.openAiConfig.GptModel
-        };
+        var postBody = CompletionPostBodyFactory.CreateFake(this.openAiConfig.GptModel);
 
         // Act
         var response = await this.completionService.Chat(postBody);
