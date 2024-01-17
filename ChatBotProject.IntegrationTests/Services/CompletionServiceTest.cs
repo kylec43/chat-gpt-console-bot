@@ -22,7 +22,7 @@ internal class CompletionServiceTest
 
     // This test will consume API Tokens
     [Test, Category("OpenAiTest"), Explicit]
-    public async Task Chat_CanReturnCorrectCompletionResponse_WhenHttpResponseIsValid()
+    public async Task Chat_CanReturnAValidCompletionResponse()
     {
         // Arrange
         var postBody = CompletionPostBodyFactory.CreateFake(this.openAiConfig.GptModel);
