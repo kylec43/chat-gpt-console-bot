@@ -6,10 +6,10 @@ namespace ChatGptBotProject.Dto.CompletionApi;
 internal record struct CompletionPostBody
 {
     [JsonPropertyName("messages")]
-    public Messages Messages { get; set; }
+    public Messages Messages { get; init; }
 
     [JsonPropertyName("model")]
-    public string Model { get; set; }
+    public string Model { get; init; }
 
     public CompletionPostBody AddMessage(Message message)
     {

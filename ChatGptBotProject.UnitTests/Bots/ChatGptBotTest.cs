@@ -24,11 +24,14 @@ internal class ChatGptBotTest
     {
         this.completionServiceMock = new Mock<ICompletionService>();
         this.respondStrategyMock = new Mock<IRespondStrategy>();
-        this.config = new OpenAiConfig();
-        this.config.GptModel = GptModelName.GPT_3_TURBO;
-        this.config.SystemContext = new List<string> { "Random Context" };
-        this.chatBot = new ChatGptBot(this.completionServiceMock.Object, this.respondStrategyMock.Object, config);
+        this.config = new OpenAiConfig
+        {
+            GptModel = GptModelName.GPT_3_TURBO,
+            SystemContext = new List<string> { "Random Context" }
 
+        };
+
+        this.chatBot = new ChatGptBot(this.completionServiceMock.Object, this.respondStrategyMock.Object, config);
     }
 
     [Test]

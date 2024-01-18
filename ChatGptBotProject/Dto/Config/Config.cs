@@ -2,5 +2,5 @@
 
 internal record struct Config
 {
-    public OpenAiConfig OpenAi { get; set; }
+    public OpenAiConfig OpenAi { get; init; }
 }

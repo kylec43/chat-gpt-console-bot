@@ -2,8 +2,8 @@
 
 internal record struct OpenAiConfig
 {
-    public string BaseUrl { get; set; }
-    public string ApiKey { get; set; }
-    public string GptModel { get; set; }
-    public List<string> SystemContext { get; set; }
+    public string BaseUrl { get; init; }
+    public string ApiKey { get; init; }
+    public string GptModel { get; init; }
+    public List<string> SystemContext { get; init; }
 }

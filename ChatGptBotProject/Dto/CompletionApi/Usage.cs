@@ -5,11 +5,11 @@ namespace ChatGptBotProject.Dto.CompletionApi;
 internal record struct Usage
 {
     [JsonPropertyName("prompt_tokens")]
-    public int PromptTokens { get; set; }
+    public int PromptTokens { get; init; }
 
     [JsonPropertyName("completion_tokens")]
-    public int CompletionTokens { get; set; }
+    public int CompletionTokens { get; init; }
 
     [JsonPropertyName("total_tokens")]
-    public int TotalTokens { get; set; }
+    public int TotalTokens { get; init; }
 }

@@ -5,14 +5,14 @@ namespace ChatGptBotProject.Dto.CompletionApi;
 internal record struct Choice
 {
     [JsonPropertyName("index")]
-    public int Index { get; set; }
+    public int Index { get; init; }
 
     [JsonPropertyName("message")]
-    public Message Message { get; set; }
+    public Message Message { get; init; }
 
     [JsonPropertyName("logprobs")]
-    public LogProbs? LogProbs { get; set; }
+    public LogProbs? LogProbs { get; init; }
 
     [JsonPropertyName("finish_reason")]
-    public string FinishReason { get; set; }
+    public string FinishReason { get; init; }
 }
