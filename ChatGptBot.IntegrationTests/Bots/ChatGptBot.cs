@@ -30,9 +30,9 @@ internal class ChatGptBotTest
         // Arrange
         var messagesToSend = new Messages
         {
-            new Message { Identifier = Identifier.User, Content = "How are you?" },
-            new Message { Identifier = Identifier.Bot, Content = "Good" },
-            new Message { Identifier = Identifier.User, Content = "Awesome" }
+            new Message { Role = Role.User, Content = "How are you?" },
+            new Message { Role = Role.Bot, Content = "Good" },
+            new Message { Role = Role.User, Content = "Awesome" }
         };
 
         // Act
@@ -43,7 +43,7 @@ internal class ChatGptBotTest
         {
             Assert.IsNotNull(response.Message);
             Assert.IsNotNull(response.MessageContent);
-            Assert.That(response.MessageIdentifier, Is.EqualTo(Identifier.Bot));
+            Assert.That(response.Role, Is.EqualTo(Role.Bot));
         });
     }
 }

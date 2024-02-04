@@ -38,7 +38,7 @@ internal class ChatGptBotTest
         var messageContent = "Hello World";
         var messagesToSend = new Messages
         {
-            new Message { Identifier = Identifier.User, Content = messageContent }
+            new Message { Role = Role.User, Content = messageContent }
         };
 
         var firstChoiceResponseMessage = "Chat Response Message";
@@ -69,7 +69,7 @@ internal class ChatGptBotTest
         var messageContent = "Hello World";
         var messagesToSend = new Messages
         {
-            new Message { Identifier = Identifier.User, Content = messageContent }
+            new Message { Role = Role.User, Content = messageContent }
         };
 
         var firstChoiceResponseMessage = "Chat Response Message";
@@ -91,7 +91,7 @@ internal class ChatGptBotTest
         // Arrange
         var messagesToSend = new Messages
         {
-            new Message { Identifier = Identifier.User, Content = "" }
+            new Message { Role = Role.User, Content = "" }
         };
 
         var emptyResponse = this.CreateFakeResponse();

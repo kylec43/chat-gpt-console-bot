@@ -1,6 +1,6 @@
 ﻿namespace ChatBot.Enum;
 
-public enum Identifier
+public enum Role
 {
     User,
     Bot

@@ -28,7 +28,7 @@ public class ChatGpt : IChatBot
         var firstChoiceMessage = this.GetFirstMessageFromResponse(chatGptResponse);
         return new ChatResponse
         {
-            Message = new Message { Identifier = Identifier.Bot, Content = firstChoiceMessage.Content }
+            Message = new Message { Role = Role.Bot, Content = firstChoiceMessage.Content }
         };
     }
 
@@ -53,7 +53,7 @@ public class ChatGpt : IChatBot
 
         foreach (var message in messages)
         {
-            var role = message.Identifier == Identifier.Bot ? ChatRole.ASSISTANT : ChatRole.USER;
+            var role = message.Role == Role.Bot ? ChatRole.ASSISTANT : ChatRole.USER;
             var chatMessage = new ChatMessage { Role = role, Content = message.Content };
             chatMessages.Add(chatMessage);
         }

@@ -33,7 +33,7 @@ public class App
                 return;
             }
 
-            var userMessage = new Message { Identifier = Identifier.User, Content = message! };
+            var userMessage = new Message { Role = Role.User, Content = message! };
             history.Add(userMessage);
             var response = await bot.Chat(history);
             history.Add(response.Message);
